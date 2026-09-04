@@ -75,7 +75,7 @@ The dashboard can generate interactive charts using **Chart.js**.
 
 ---
 
-# 🧠 How It Works
+## 🧠 How It Works
 
 The system uses a hybrid AI + deterministic analysis architecture.
 
@@ -121,7 +121,7 @@ The system uses a hybrid AI + deterministic analysis architecture.
 
 ---
 
-# 🔄 AI Analysis Flow
+## 🔄 AI Analysis Flow
 
 The project does **not rely entirely on the LLM for numerical calculations**.
 
@@ -184,7 +184,7 @@ This separation helps keep numerical analysis **deterministic and reliable**, wh
 
 ---
 
-# 🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 | Category        | Technologies            |
 | --------------- | ----------------------- |
@@ -198,7 +198,7 @@ This separation helps keep numerical analysis **deterministic and reliable**, wh
 
 ---
 
-# 📁 Project Structure
+## 📁 Project Structure
 
 ```text
 AI-Data-Analyst/
@@ -219,41 +219,41 @@ AI-Data-Analyst/
 
 ---
 
-# 🚀 Installation
+## 🚀 Installation
 
-## 1. Clone the repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/pragadeeshwarangit/AI-Data-Analyst.git
 ```
 
-## 2. Open the project
+### 2. Open the project
 
 ```bash
 cd AI-Data-Analyst
 ```
 
-## 3. Create a virtual environment
+### 3. Create a virtual environment
 
-### Windows
+Windows:
 
 ```powershell
 python -m venv venv
 ```
 
-## 4. Activate the environment
+### 4. Activate the environment
 
 ```powershell
 venv\Scripts\Activate.ps1
 ```
 
-## 5. Install dependencies
+### 5. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 6. Install Ollama
+### 6. Install Ollama
 
 Install Ollama and make sure it is running locally.
 
@@ -269,7 +269,7 @@ If Llama 3.2 is not installed:
 ollama pull llama3.2
 ```
 
-## 7. Run the application
+### 7. Run the application
 
 ```bash
 python app.py
@@ -283,7 +283,7 @@ http://127.0.0.1:5000
 
 ---
 
-# 📊 Example Dataset
+## 📊 Example Dataset
 
 The repository includes a small employee dataset for testing.
 
@@ -297,7 +297,7 @@ The repository includes a small employee dataset for testing.
 
 ---
 
-# 💡 Example Questions
+## 💡 Example Questions
 
 Try asking:
 
@@ -323,7 +323,7 @@ Show average salary by city as a chart.
 
 ---
 
-# 🎯 Why This Project?
+## 🎯 Why This Project?
 
 This project explores how **traditional data-analysis systems can be combined with modern local LLMs**.
 
@@ -353,7 +353,7 @@ This provides a balance between:
 
 ---
 
-# 🔮 Future Improvements
+## 🔮 Future Improvements
 
 Possible future versions could include:
 
@@ -372,7 +372,7 @@ Possible future versions could include:
 
 ---
 
-# 👨‍💻 Author
+## 👨‍💻 Author
 
 **Pragadeeshwaran**
 
@@ -380,8 +380,19 @@ B.Tech Artificial Intelligence & Machine Learning
 
 ---
 
-# 📜 License
+## 📜 License
 
 This project is available for **educational and portfolio purposes**.
 
-````
+```
+
+After pasting:
+
+1. Click **Preview**.
+2. Check that the tables look like actual tables and there are **no `[svg]` lines**.
+3. Click **Commit changes**.
+4. Use commit message:
+   `Improve README documentation`
+
+That's the version to use.
+```
