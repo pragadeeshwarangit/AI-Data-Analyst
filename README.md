@@ -1,42 +1,24 @@
+````markdown
 # AI Data Analyst
 
-An AI-powered data analysis dashboard that allows users to upload CSV or Excel datasets, automatically analyze them, visualize important statistics, and ask questions about their data using natural language.
+An AI-powered data analysis dashboard that allows users to upload CSV or Excel datasets, automatically analyze their data, visualize statistics, and ask questions using natural language.
 
-The project combines deterministic data analysis with an AI layer using Llama 3.2 through Ollama.
-
----
-
-## Overview
-
-Traditional data analysis often requires users to manually inspect datasets, write queries, calculate statistics, and create visualizations.
-
-AI Data Analyst simplifies this process by providing an interactive dashboard where users can:
-
-- Upload datasets
-- Automatically understand their data
-- Generate statistical insights
-- Detect data-quality issues
-- Visualize numeric data
-- Ask questions using natural language
-- Receive calculated answers using Pandas
-- Use an LLM for questions that require natural-language understanding
-
-The project is designed to run locally.
+The project combines **deterministic data analysis with a local LLM**, using **Pandas for reliable calculations** and **Llama 3.2 through Ollama for natural-language understanding**.
 
 ---
 
-## Features
+## ✨ Features
 
-### Dataset Analysis
+### 📂 Dataset Analysis
 
-- CSV file upload
-- Excel (`.xlsx`) file upload
+- Upload CSV datasets
+- Upload Excel (`.xlsx`) datasets
 - Automatic row and column detection
 - Automatic data-type detection
 - Dataset preview
 - Numeric and categorical column identification
 
-### Data Quality Analysis
+### 🧹 Data Quality Analysis
 
 - Missing-value detection
 - Missing values by column
@@ -45,7 +27,7 @@ The project is designed to run locally.
 - Constant-column detection
 - Potential outlier detection using the IQR method
 
-### Statistical Analysis
+### 📊 Statistical Analysis
 
 For numeric columns, the application can calculate:
 
@@ -55,9 +37,11 @@ For numeric columns, the application can calculate:
 - Maximum
 - Standard deviation
 
-### Natural Language Data Analysis
+### 💬 Natural Language Analysis
 
-Users can ask questions such as:
+Ask questions about your dataset in plain English.
+
+Example:
 
 ```text
 How many employees are there?
@@ -72,132 +56,151 @@ What is the average salary by city?
 
 Which city has the highest average salary?
 
-AI Integration
+Show average salary by city as a chart.
+````
+
+### 🤖 AI Integration
 
 The application uses:
 
-Llama 3.2
-Ollama
-A Python-based analysis engine
+* **Llama 3.2**
+* **Ollama**
+* **Python-based analysis engine**
 
-The LLM is used to understand unsupported or more natural questions, while reliable numerical calculations are handled by Pandas.
+The LLM is used for natural-language understanding and unsupported questions, while numerical calculations are handled by Pandas.
 
-Visualization
+### 📈 Interactive Visualization
 
-The dashboard can generate interactive charts using Chart.js.
+The dashboard can generate interactive charts using **Chart.js**.
 
-Architecture
+---
 
+# 🧠 How It Works
 
-                    ┌──────────────────┐
-                    │      User        │
-                    │  Upload / Ask    │
-                    └────────┬─────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │      Flask       │
-                    │     Backend      │
-                    └────────┬─────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │   AI Engine      │
-                    │  ai_engine.py    │
-                    └───────┬──────────┘
-                            │
-                 ┌──────────┴──────────┐
-                 │                     │
-                 ▼                     ▼
-        ┌────────────────┐    ┌────────────────┐
-        │     Pandas     │    │   Llama 3.2    │
-        │ Reliable       │    │ Natural        │
-        │ calculations   │    │ language       │
-        └────────┬───────┘    │ understanding  │
-                 │            └───────┬────────┘
-                 │                    │
-                 └──────────┬─────────┘
-                            ▼
-                   ┌──────────────────┐
-                   │ Analysis Result  │
-                   └────────┬─────────┘
-                            │
-                            ▼
-                   ┌──────────────────┐
-                   │    Dashboard     │
-                   │ Tables + Charts  │
-                   └──────────────────┘
+The system uses a hybrid AI + deterministic analysis architecture.
 
-                   
-AI Analysis Flow
+```text
+                         ┌──────────────────┐
+                         │       User       │
+                         │  Upload / Ask    │
+                         └────────┬─────────┘
+                                  │
+                                  ▼
+                         ┌──────────────────┐
+                         │      Flask       │
+                         │     Backend      │
+                         └────────┬─────────┘
+                                  │
+                                  ▼
+                         ┌──────────────────┐
+                         │    AI Engine     │
+                         │  ai_engine.py    │
+                         └────────┬─────────┘
+                                  │
+                    ┌─────────────┴─────────────┐
+                    │                           │
+                    ▼                           ▼
+             ┌──────────────┐            ┌──────────────┐
+             │    Pandas    │            │   Llama 3.2  │
+             │              │            │              │
+             │ Calculations │            │ Understanding│
+             └──────┬───────┘            └──────┬───────┘
+                    │                           │
+                    └─────────────┬─────────────┘
+                                  ▼
+                         ┌──────────────────┐
+                         │ Analysis Result  │
+                         └────────┬─────────┘
+                                  │
+                                  ▼
+                         ┌──────────────────┐
+                         │    Dashboard     │
+                         │ Tables + Charts  │
+                         └──────────────────┘
+```
 
-The project follows a controlled approach rather than allowing the LLM to directly invent numerical answers.
+---
 
+# 🔄 AI Analysis Flow
+
+The project does **not rely entirely on the LLM for numerical calculations**.
+
+Instead, it follows a controlled analysis pipeline.
+
+```text
 User Question
       │
       ▼
 AI Analysis Engine
       │
       ├── Known analysis?
-      │        │
-      │       YES
-      │        │
-      │        ▼
-      │      Pandas
-      │        │
-      │        ▼
-      │   Actual Result
+      │
+      ├── YES
+      │    │
+      │    ▼
+      │  Pandas
+      │    │
+      │    ▼
+      │ Actual Result
       │
       └── Unsupported question
-               │
-               ▼
-           Llama 3.2
-               │
-               ▼
-        Natural-language
-          interpretation
+           │
+           ▼
+       Llama 3.2
+           │
+           ▼
+    Natural-language
+      interpretation
+```
 
-For grouped analysis:
+### Grouped Analysis
 
+For questions such as:
+
+> What is the average salary by city?
+
+The system can use the LLM to create a structured analysis plan and then allow Pandas to perform the actual calculation.
+
+```text
 User Question
       │
       ▼
 Llama 3.2
       │
       ▼
-Structured analysis plan
+Structured Analysis Plan
       │
       ▼
 Pandas
       │
       ▼
-Actual calculation
+Actual Calculation
       │
       ▼
-Final answer / chart
+Final Answer / Chart
+```
 
-This separation helps keep numerical analysis deterministic while using AI where it provides the most value.
+This separation helps keep numerical analysis **deterministic and reliable**, while still using AI where natural-language understanding provides value.
 
-Tech Stack
-Backend
-Python
-Flask
-Data Analysis
-Pandas
-OpenPyXL
-Artificial Intelligence
-Ollama
-Llama 3.2
-Frontend
-HTML5
-CSS3
-JavaScript
-Chart.js
-Development
-Visual Studio Code
-Git
-GitHub
-Project Structure
+---
+
+# 🛠️ Tech Stack
+
+| Category        | Technologies            |
+| --------------- | ----------------------- |
+| Backend         | Python, Flask           |
+| Data Analysis   | Pandas, OpenPyXL        |
+| AI              | Ollama, Llama 3.2       |
+| Frontend        | HTML5, CSS3, JavaScript |
+| Visualization   | Chart.js                |
+| Development     | Visual Studio Code      |
+| Version Control | Git, GitHub             |
+
+---
+
+# 📁 Project Structure
+
+```text
 AI-Data-Analyst/
 │
 ├── app.py
@@ -208,96 +211,177 @@ AI-Data-Analyst/
 ├── employees.csv
 ├── requirements.txt
 ├── .gitignore
+├── README.md
 │
 └── templates/
     └── index.html
-Installation
-1. Clone the repository
+```
+
+---
+
+# 🚀 Installation
+
+## 1. Clone the repository
+
+```bash
 git clone https://github.com/pragadeeshwarangit/AI-Data-Analyst.git
-2. Open the project
+```
+
+## 2. Open the project
+
+```bash
 cd AI-Data-Analyst
-3. Create a virtual environment
+```
 
-Windows:
+## 3. Create a virtual environment
 
+### Windows
+
+```powershell
 python -m venv venv
-4. Activate the environment
+```
+
+## 4. Activate the environment
+
+```powershell
 venv\Scripts\Activate.ps1
-5. Install dependencies
+```
+
+## 5. Install dependencies
+
+```bash
 pip install -r requirements.txt
-6. Install Ollama
+```
+
+## 6. Install Ollama
 
 Install Ollama and make sure it is running locally.
 
-Then verify that Llama 3.2 is available:
+Then verify the available models:
 
+```bash
 ollama list
+```
 
-If necessary:
+If Llama 3.2 is not installed:
 
+```bash
 ollama pull llama3.2
-7. Run the application
+```
+
+## 7. Run the application
+
+```bash
 python app.py
+```
 
 Open:
 
+```text
 http://127.0.0.1:5000
-Example Dataset
+```
 
-The repository includes a small employee dataset for testing:
+---
 
-Name	Age	City	Salary	Experience
-Arun	21	Chennai	35000	1
-Priya	22	Bangalore	42000	2
-Rahul	20	Chennai	30000	0
-Sneha	23	Hyderabad	50000	3
-Karthik	21	Mumbai	38000	1
-Example Questions
+# 📊 Example Dataset
+
+The repository includes a small employee dataset for testing.
+
+| Name    | Age | City      | Salary | Experience |
+| ------- | --: | --------- | -----: | ---------: |
+| Arun    |  21 | Chennai   |  35000 |          1 |
+| Priya   |  22 | Bangalore |  42000 |          2 |
+| Rahul   |  20 | Chennai   |  30000 |          0 |
+| Sneha   |  23 | Hyderabad |  50000 |          3 |
+| Karthik |  21 | Mumbai    |  38000 |          1 |
+
+---
+
+# 💡 Example Questions
 
 Try asking:
 
+```text
 How many employees are there?
+
 What is the average salary?
+
 What is the highest salary?
+
 What is the lowest salary?
+
 How many unique cities are there?
+
 Are there any missing values?
+
 What is the average salary by city?
+
 Which city has the highest average salary?
+
 Show average salary by city as a chart.
-Why This Project?
+```
 
-This project was built to explore how traditional data-analysis systems can be combined with modern local LLMs.
+---
 
-Instead of relying entirely on an LLM for calculations, the system uses:
+# 🎯 Why This Project?
 
-LLM for understanding
+This project explores how **traditional data-analysis systems can be combined with modern local LLMs**.
 
-Pandas for computation
+Instead of allowing an LLM to perform every calculation, the system separates the responsibilities:
 
-This approach provides a better balance between natural-language interaction and reliable numerical analysis.
+```text
+LLM
+ ↓
+Understand the question
 
-Future Improvements
+Pandas
+ ↓
+Perform the calculation
+
+Dashboard
+ ↓
+Present the result
+```
+
+This provides a balance between:
+
+* Natural-language interaction
+* Deterministic computation
+* Data analysis
+* AI-assisted reasoning
+* Interactive visualization
+
+---
+
+# 🔮 Future Improvements
 
 Possible future versions could include:
 
-Advanced natural-language query planning
-More analysis tools
-Automatic chart selection
-Correlation heatmaps
-Advanced outlier analysis
-Data cleaning recommendations
-Multiple dataset comparison
-Exportable analysis reports
-More file formats
-More powerful local LLM models
-AI-generated executive summaries
-Author
+* Advanced natural-language query planning
+* Automatic chart selection
+* Correlation heatmaps
+* Advanced outlier analysis
+* Data-cleaning recommendations
+* Multiple dataset comparison
+* Exportable analysis reports
+* Additional file formats
+* More powerful local LLM models
+* AI-generated executive summaries
+* Advanced exploratory data analysis
+* Automated report generation
 
-Pragadeeshwaran
+---
+
+# 👨‍💻 Author
+
+**Pragadeeshwaran**
 
 B.Tech Artificial Intelligence & Machine Learning
 
-License
+---
 
-This project is available for educational and portfolio purposes.
+# 📜 License
+
+This project is available for **educational and portfolio purposes**.
+
+````
